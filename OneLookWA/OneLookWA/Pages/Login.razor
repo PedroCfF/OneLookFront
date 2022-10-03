@@ -1,0 +1,67 @@
+﻿@using OneLookWA.Models
+@using OneLookWA.Services.Users
+@using System.Linq;
+
+@page "/"
+
+@inject IUsersService UsersService
+@inject NavigationManager mnavigationManager;
+
+<div class="container d-flex justify-content-center align-items-center" style="width:100%;height:100vh">
+    <div style="max-width:400px;max-height:300px;border-radius:12px" class="border border-dark bg-light d-flex flex-column justify-content-center align-items-center">
+        <div class="p-3">
+            <EditForm Model="@userRequest" OnSubmit="HandleUserSubmit">
+                <div class="mb-1">
+                    <label for="name">User name</label>
+                    <InputText id="name" class="form-control" @bind-Value="@userRequest.name"></InputText>
+                </div>
+                <div class="mb-1">
+                    <label for="password">Password</label>
+                    <InputText id="password" class="form-control" @bind-Value="@userRequest.password"></InputText>
+                </div>
+                <div class="mb-3 mt-2" style="text-align:center">
+                    <button type="submit" class="btn btn-primary">Log in</button>
+                </div>
+            </EditForm>
+            <div class="text-center m-1">
+                <a href="/CreateAccount" style="background-size:12px;text-decoration:none">Create account</a>
+            </div>
+            <div style="height:20px;color:red" class="m-1 container text-center align-items-center">
+                @validationErrorString
+            </div>
+        </div>       
+    </div>
+</div>
+
+@code {
+    Request userRequest = new Request();
+    User user = new User();
+    string validationErrorString = " ";
+
+    protected override async Task OnInitializedAsync()
+    {
+     
+    }
+
+    public async Task HandleUserSubmit()
+    {
+        user = await UsersService.GetUser(userRequest);
+
+        if (user == null)
+        {
+            validationErrorString = "wrong username";
+        }
+        else
+        {
+            if (user.Password == userRequest.password)
+            {
+                int userId = user.UserId;
+                mnavigationManager.NavigateTo($"/General/{userId}");
+            }
+            else
+            {
+                validationErrorString = "wrong password";
+            }
+        }     
+    }
+}
