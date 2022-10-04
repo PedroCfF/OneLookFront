@@ -196,13 +196,13 @@
       "mscorlib.dll": "sha256-MnMyZHtcymf0sLxXeFBbQZVsdNdxT0GXJaa9t3ZdSek=",
       "netstandard.dll": "sha256-+SGdnDhVMiZ9hq0EsYwJ+mcK0odf3bAtXnSKLorGDCs=",
       "System.Private.CoreLib.dll": "sha256-mqfalNg3wC8XHlyA+j5ioNcnc0kt4prNudKdyJoaYaU=",
-      "OneLookWA.dll": "sha256-r3Y+FFQMQRBl5\/Zj5Nc7FLOQXt4Whn8nO58r\/LY0XcA="
+      "OneLookWA.dll": "sha256-eP6EB2MgF04sonJh3yQXT+Om6Rww92jQG5V+tjMfWwM="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "OneLookWA.pdb": "sha256-Wvq64zgJjpC+bR1FfbeNC3R67WmYSmbhY61JsGPh\/U0="
+      "OneLookWA.pdb": "sha256-a23r01qi\/cfoT3Oxz2xNZ6V+mVIqCTXNkwal2sQmeR0="
     },
     "runtime": {
       "dotnet.6.0.9.pwjdsfqy73.js": "sha256-Azk5sbYFVo84h8NpIst9roIPGLH2y8ewQ9SY\/sUHvgs=",

@@ -5,7 +5,7 @@
 @page "/"
 
 @inject IUsersService UsersService
-@inject NavigationManager mnavigationManager;
+@inject NavigationManager navigationManager;
 
 <div class="container d-flex justify-content-center align-items-center" style="width:100%;height:100vh">
     <div style="max-width:400px;max-height:300px;border-radius:12px" class="border border-dark bg-light d-flex flex-column justify-content-center align-items-center">
@@ -55,8 +55,8 @@
         {
             if (user.Password == userRequest.password)
             {
-                int userId = user.UserId;
-                mnavigationManager.NavigateTo($"/General/{userId}");
+                int id = user.UserId;
+                navigationManager.NavigateTo($"/UserProfile/{id}");
             }
             else
             {

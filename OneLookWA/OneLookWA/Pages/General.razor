@@ -1,9 +1,23 @@
-﻿@layout MainLayout
+﻿@using OneLookWA.Services.Projects
+@using OneLookWA.Models
+
+@layout UserProfileLayout
 
 @page "/General/{id:int}"
 
-<h3>General</h3>
+@inject IProjectsService ProjectsService
+
+<div style="width:100%;height:100%;background-color:grey">
+    @id
+</div>
 
 @code {
+    [Parameter]
+    public int id { get; set; }
+    List<Project> projects = new List<Project>();
 
+    protected override async Task OnParametersSetAsync()
+    {
+        projects = await ProjectsService.GetProjects(id);
+    }
 }

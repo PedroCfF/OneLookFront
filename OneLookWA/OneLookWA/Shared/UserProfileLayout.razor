@@ -1,0 +1,55 @@
+﻿@using OneLookWA.Services.Projects
+@using OneLookWA.Services.Users
+@using OneLookWA.Models
+
+@page "/UserProfile/{id:int}"
+
+@inject IProjectsService ProjectsService
+@inject IUsersService UsersService
+@inject NavigationManager navigationManager
+
+@inherits LayoutComponentBase
+
+<div class="d-flex">
+    <div style="width:200px;height:100vh" class="bg-light border-end">
+        <div style="height:3.5rem" class="border-bottom p-2">
+            <p>pipi</p>
+        </div>
+        <div class="p-2">
+            <ul>
+                @foreach (var project in projects)
+                {
+                    <li>@project.ProjectName</li>
+                }
+            </ul>            
+        </div>
+    </div>
+
+    <main style="width:100%;height:100vh">
+        <div style="height:3.5rem" class="bg-light border-bottom">
+            <p>holi</p>
+        </div>
+        <div style="width:100%;height:100%">
+            @Body
+        </div>
+    </main>
+</div>
+
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    List<Project> projects = new List<Project>();
+
+    User user = new User();
+
+    protected override async Task OnInitializedAsync()
+    {
+        navigationManager.NavigateTo($"/General/{id}");
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        projects = await ProjectsService.GetProjects(id);
+    }
+}
